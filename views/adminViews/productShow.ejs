@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%-include("./partials/head")%>
+    
+    </head>
+    <body>
+        <div id="main-wrapper">
+        
+            <%-include("./partials/header")%>
+        
+        <!--**********************************
+            Header start
+        ***********************************-->
+       
+    
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <%-include("./partials/sidebars")%>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+        
+        
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <div class="card">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>BRAND</th>
+                            <th>SUB-CATEGORY</th>
+                            <th>CATEGORY</th>
+                            <th>   </th>
+
+                        </tr>
+                    </thead>
+                    </div>
+                    <tbody>
+                        <%for(value of productData){%>
+                            <tr>
+                                <td>
+                                    <%=value.product_name%>
+                                </td>
+                                <td>
+                                    <%=value.brands[0].brand%>
+                                </td>
+                                <td>
+                                    <%=value.categories[0].categories%>
+                                </td>
+                                <td>
+                                    <%=value.subcategories[0].sub_category%>
+                                </td>
+                                <td>
+                                    <form action="/product/productEdit" method="post">
+                                        <input type="hidden" name="_id" value="<%=value._id%>">
+                                        <button class="btn btn-primary" type="submit" id="edit">edit</button>
+                                    </form>
+                                <% } %>
+                                </td>
+                            </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+
+
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <%-include("./partials/footers")%>
+    <!--**********************************
+        Footer end
+    ***********************************-->
+    </div>
+    </script>
+    <%-include("./partials/scripts")%>
+</body>
+</html>

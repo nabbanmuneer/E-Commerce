@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%-include("./partials/head")%>
+
+</head>
+
+<body>
+
+    <div id="main-wrapper">
+
+        
+
+       
+        <%-include("./partials/header")%>
+    
+        <%-include("./partials/sidebars")%>
+      
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <div class="mt-5 ">
+                <h1 class="container text-center">ADD NEW CATEGORY</h1>
+                <div class="container card col-4">
+                    <form class="mt-5 mb-5 login-input" method="post" action="/categories/catogeriesPost" >
+                        <div class="form-group ml-2">
+                            <label class=" h-6">Enter the category name</label><br>
+                            <input type="text" name="categories" class="form-control"  placeholder="add category" required><br>
+                            
+                            <button class="text-white bg-primary form-control " type="submit">add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        
+        
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <%-include("./partials/footers")%>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <%-include("./partials/scripts")%>
+
+</body>
+
+</html>

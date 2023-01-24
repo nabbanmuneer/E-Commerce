@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%-include("./partials/head")%>
+</head>
+<body>
+    <div id="main-wrapper">
+        <%-include("./partials/header")%>
+        <%-include("./partials/sidebars")%>
+        <div class="content-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <div class="card">
+                        <thead>
+                            <tr>
+            
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone no</th>
+                                <th>   </th>
+                                <th>   </th>
+    
+                            </tr>
+                        </thead>
+                    </div>
+                    <tbody>
+                        <%for(value of userData){%>
+                            <tr>
+                                <td>
+                                    <%=value.name%>
+                                </td>
+                                <td>
+                                    <%=value.Email%>
+                                </td>
+                                <td>
+                                    <%=value.Number%>
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <%if(value.userStatus == true){%>
+
+                                <td>
+                                        <button class="btn btn-danger" value="block" type="submit" id="<%=value._id%>" onclick="block(event,'<%=value._id%>','<%=value.userStatus%>')">block</button>
+                                </td>
+                                <%}else{%>
+                                <td>
+                                        <button class="btn btn-success" value="unblock" type="submit" id="<%=value._id%>" onclick="block(event,'<%=value._id%>','<%=value.userStatus%>')">unblock</button>
+                                </td>
+                                <%}%>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <%-include("./partials/footers")%>
+    <%-include("./partials/scripts")%>
+    <script>
+        function block(event,userId,userStatus){
+            console.log(userId);
+            let action=document.getElementById(userId).value
+            console.log(action);
+            fetch('/admin/block',{
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body:JSON.stringify({userId,action})
+            }).then(res=>res.json()).then(data=>{
+                console.log(data)
+                if(action=="unblock"){
+                    document.getElementById(userId).value="block"
+                    document.getElementById(userId).innerHTML="block";
+                }else{
+                    document.getElementById(userId).value="unblock"
+                    document.getElementById(userId).innerHTML="unblock";
+                }
+                console.log(action);
+            })
+        }
+    </script>
+</body>
+</html> 

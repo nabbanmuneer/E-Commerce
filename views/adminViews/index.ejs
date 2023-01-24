@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%-include("./partials/head")%>
+
+</head>
+
+<body>    
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+       <%-include("./partials/header")%>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <%-include("./partials/sidebars")%>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+
+            <div class="container-fluid mt-3">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card gradient-1">
+                            <div class="card-body">
+                                <h3 class="card-title text-white">Products Sold</h3>
+                                <div class="d-inline-block">
+                                    <h2 class="text-white"><%=count%></h2>
+                                    <p class="text-white mb-0"><%=today%></p>
+                                </div>
+                                <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card gradient-2">
+                            <div class="card-body">
+                                <h3 class="card-title text-white">Total Sale</h3>
+                                <div class="d-inline-block">
+                                    <h2 class="text-white">Rs. <%=total%></h2>
+                                    <p class="text-white mb-0"><%=today%></p>
+                                </div>
+                                <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card gradient-3">
+                            <div class="card-body">
+                                <h3 class="card-title text-white">total orders</h3>
+                                <div class="d-inline-block">
+                                    <h2 class="text-white"><%=customer%></h2>
+                                    <p class="text-white mb-0"><%=today%></p>
+                                </div>
+                                <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card gradient-4">
+                            <div class="card-body">
+                                <h3 class="card-title text-white">total user accounts</h3>
+                                <div class="d-inline-block">
+                                    <h2 class="text-white"><%=Count%></h2>
+                                    <p class="text-white mb-0"><%=today%></p>
+                                </div>
+                                <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row card">
+                    <div class="col-lg-12 d-flex  justify-content-center">
+                        <div class="card col-7">
+                            <div class="card-body ">
+                                <div>
+                                    <h4 class="mb-1">Order Managment</h4>                                            
+                                </div>
+                            </div>
+                            <div class="chart-wrapper">
+                                <canvas id="myChart"></canvas>
+                            </div>
+                            <div class="card-body">
+                                
+                                
+                            </div>
+                            <button class="btn-danger" onclick="download()" >download</button>
+                        </div>                    
+                    </div>
+                </div>
+            </div>
+            <!-- #/ container -->
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        
+        <!--**********************************
+            Footer start
+            ***********************************-->
+            
+            <%-include("./partials/footers.ejs")%>
+        </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <script src="../adminPages/plugins/common/common.min.js"></script>
+    <script src="../adminPages/js/custom.min.js"></script>
+    <script src="../adminPages/js/settings.js"></script>
+    <script src="../adminPages/js/gleek.js"></script>
+    <script src="../adminPages/js/styleSwitcher.js"></script>
+
+    <!-- Chartjs -->
+    <script src="../adminPages/plugins/chart.js/Chart.bundle.min.js"></script>
+    <!-- Circle progress -->
+    <script src="../adminPages/plugins/circle-progress/circle-progress.min.js"></script>
+    <!-- Datamap -->
+    <script src="../adminPages/plugins/d3v3/index.js"></script>
+    <script src="../adminPages/plugins/topojson/topojson.min.js"></script>
+    <script src="../adminPages/plugins/datamaps/datamaps.world.min.js"></script>
+    <!-- Morrisjs -->
+    <script src="../adminPages/plugins/raphael/raphael.min.js"></script>
+    <script src="../adminPages/plugins/morris/morris.min.js"></script>
+    <!-- Pignose Calender -->
+    <script src="../adminPages/plugins/moment/moment.min.js"></script>
+    <script src="../adminPages/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
+    <!-- ChartistJS -->
+    <script src="../adminPages/plugins/chartist/js/chartist.min.js"></script>
+    <script src="../adminPages/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+
+    <script src="../adminPages/js/dashboard/dashboard-1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" 
+    integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+</body>
+
+</html>

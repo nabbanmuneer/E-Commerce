@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%-include("./partials/head")%>
+    
+    </head>
+    <body>
+        <div id="main-wrapper">
+        
+            <%-include("./partials/header")%>
+        
+        <!--**********************************
+            Header start
+        ***********************************-->
+        
+        <!--**********************************
+            Header end ti-comment-alt
+            ***********************************-->
+            <!--**********************************
+                Sidebar start
+            ***********************************-->
+                <%-include("./partials/sidebars")%>
+                
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+        
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <div class="mt-5 ">
+                <h1 class="container text-center">ADD NEW COUPON</h1>
+                <div class="container card col-4">
+                    <form class="mt-5 mb-5 login-input" method="post" action="/admin/couponPost" >
+                        <div class="form-group ml-2">
+                            <label class=" h-5">Enter the coupon name</label><br>
+                            <input type="text" name="coupon_Name" class="form-control"  placeholder="coupon name" required><br>
+                            <label class=" h-5">Enter the coupon code</label><br>
+                            <input type="text" name="coupan_Code" class="form-control"  placeholder="coupan code" required><br>
+                            <label class=" h-5">Enter the coupon Percentage</label><br>
+                            <input type="text" name="couponAmount" class="form-control"  placeholder="coupan Percentage" required><br>
+                            <label class=" h-5">Enter the coupon min Amount</label><br>
+                            <input type="text" name="couponMinAmount" class="form-control"  placeholder="coupan min Amount" required><br>
+                            <label class=" h-5">Enter the coupon Expire</label><br>
+                            <input type="text" name="coupan_Expire" class="form-control"  placeholder="coupan Expire" required><br>
+                            
+                            <button class="text-white bg-primary form-control " type="submit">add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+         
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <%-include("./partials/footers")%>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <%-include("./partials/scripts")%>
+    
+</body>
+
+</html>

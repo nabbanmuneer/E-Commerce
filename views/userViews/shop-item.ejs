@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!--
+Template: Metronic Frontend Freebie - Responsive HTML Template Based On Twitter Bootstrap 3.3.4
+Version: 1.0.0
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<!-- Head BEGIN -->
+<head>
+  <%-include("./partials/head.ejs")%>
+  <!-- Theme styles END -->
+</head>
+<!-- Head END -->
+
+<!-- Body BEGIN -->
+<body class="ecommerce">
+    <!-- BEGIN STYLE CUSTOMIZER -->
+
+    <!-- END BEGIN STYLE CUSTOMIZER --> 
+
+    <!-- BEGIN TOP BAR -->
+   
+    <!-- END TOP BAR -->
+
+    <!-- BEGIN HEADER -->
+    <%-include("./partials/header")%>
+    <!-- Header END -->
+    
+    <div class="main" style="min-height:100vh;">
+      <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">item</li>
+        </ul>
+        <!-- BEGIN SIDEBAR & CONTENT -->
+        <%-include("./partials/sidebar.ejs")%>
+          <!-- END SIDEBAR -->
+
+          <!-- BEGIN CONTENT -->
+          <div class="col-md-9 col-sm-7">
+            <div class="product-page">
+              <div class="row">
+                <%for(product of product){%>  
+                  <form action="/cart/cartSave/<%=product._id%>" method="post">
+                  
+                    <div class="col-md-6 col-sm-6">
+                      <div class="product-main-image">
+                        <img src="<%=product.image[0].url%>" alt="Cool green dress with red bell" class="img-responsive" data-BigImgsrc="<%=product.image[0].url%>">
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                      <input name="name" value="<%=product.product_name%>" hidden>
+                      <h1><%=product.product_name%></h1>
+                      <div class="price-availability-block clearfix">
+                        <div class="price">
+                          <input name="mrp" value="<%=product.mrp%>" hidden>
+                          <strong><span>Rs</span> <%=product.mrp%></strong>
+                        </div> 
+                      </div>
+                      <div class="description">
+                        <p><%=product.description%></p>
+                      </div>
+                      <div class="product-page-options">
+                        <div class="pull-left">
+                          <label class="control-label">Size:</label>
+                            <select name="size" class="form-control input-sm">
+                              <option value="small">S</option>
+                              <option value="medium">M</opton>
+                              <option value="large">L</option>
+                              <option value="xtraLarge">XL</option>
+                            </select>
+                        </div>
+                      </div>
+                      <input name="quantity" value="1" type="text" hidden>
+                      <div class="product-page-cart">
+                        <button class="btn btn-primary" type="submit">Add to cart</button>
+                      </div>
+                  </form>
+                  
+
+                
+                <%}%>
+              </div>
+            </div>
+          </div>
+          <!-- END CONTENT -->
+        </div>
+      </div>
+    </div>
+      
+      <%-include("./partials/footer")%>
+        <!-- END SIDEBAR & CONTENT -->
+
+        <!-- BEGIN SIMILAR PRODUCTS -->
+        
+    <!-- END fast view of a product -->
+
+    <!-- Load javascripts at bottom, this will reduce page load time -->
+    <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
+    <!--[if lt IE 9]>
+    <script src="../../userPages/assets/plugins/respond.min.js"></script>  
+    <![endif]-->  
+    <%-include("./partials/scripts.ejs")%>
+    </script>
+    <!-- END PAGE LEVEL JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--
+Template: Metronic Frontend Freebie - Responsive HTML Template Based On Twitter Bootstrap 3.3.4
+Version: 1.0.0
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<!-- Head BEGIN -->
+<head>
+  <%-include("./partials/head.ejs")%>
+  <!-- Theme styles END -->
+</head>
+<!-- Head END -->
+
+<!-- Body BEGIN -->
+<body class="ecommerce">
+    <!-- BEGIN STYLE CUSTOMIZER -->
+    
+    <!-- END BEGIN STYLE CUSTOMIZER --> 
+
+    <!-- BEGIN TOP BAR -->
+    <%-include("./partials/header.ejs")%>
+    <!-- Header END -->
+
+    
+
+    <div class="main" >
+      <div class="container" style="min-height:100vh;">
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li class="active">category</li>
+        </ul>
+        <!-- BEGIN SIDEBAR & CONTENT -->
+        <%-include("./partials/sidebar.ejs")%>
+          <!-- END SIDEBAR -->
+          <!-- BEGIN CONTENT -->
+          <div class="col-md-9 col-sm-7">
+            
+            <!-- BEGIN PRODUCT LIST -->
+            <div class="row product-list">
+              <!-- PRODUCT ITEM START -->
+              <%for(value of products){%>
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="product-item ">
+                  <div class="pi-img-wrapper">
+                    <img href="/item/itemDetail/<%=value._id%>"  src="<%=value.image[0].url%>" class="img-responsive" alt="<%=value.product_name%>">
+                  </div>
+                  <h3><a href="/item/itemDetail/<%=value._id%>"><%=value.product_name%></a></h3>
+                  <div   class="pi-price" value="<%=value._id%>">Rs.<%=value.mrp%></div><br><br>
+                    <a class="btn btn-default add2cart col-6" id="<%=value._id%>"  onclick="wish(event,'<%=value._id%>')" >add Wishlist</a>
+                
+            
+                </div>
+              </div>
+              <%}%>
+              <!-- PRODUCT ITEM END -->
+            </div>
+            <!-- END PAGINATOR -->
+          </div>
+          <!-- END CONTENT -->
+        </div>
+        <!-- END SIDEBAR & CONTENT -->
+      </div>
+    
+
+    <!-- BEGIN BRANDS -->
+    
+    <!-- END PRE-FOOTER -->
+
+    <!-- BEGIN FOOTER -->
+    <%-include('./partials/footer.ejs')%>
+    <!-- END FOOTER -->
+
+    <!-- BEGIN fast view of a product -->
+    
+    
+    <!-- END fast view of a product -->
+
+    <!-- Load javascripts at bottom, this will reduce page load time -->
+    <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
+    <!--[if lt IE 9]>
+    <script src="../../userPages/plugins/respond.min.js"></script>  
+    <![endif]-->  
+    <%-include('./partials/scripts.ejs')%>
+        
+    </script>
+    <script>
+      function wish(event,product_Id){
+        console.log(product_Id);
+       fetch('/wishlist/addList',
+       {
+          method:"POST",
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({product_Id})
+       })
+       .then(res=>res.json()).then(data=>{
+        Swal.fire({
+            icon: 'success',
+            title: 'Done',
+            text: 'your product add on wishlist'
+        }).then(function() {
+            document.getElementById(data.product_Id).innerHTML="done"
+        })
+       })
+      }
+    </script>
+    <!-- END PAGE LEVEL JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

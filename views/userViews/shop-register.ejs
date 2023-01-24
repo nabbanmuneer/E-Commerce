@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%-include("./partials/head.ejs")%>
+    </head>
+        <body class="ecommerce">
+            <div class="pre-header">
+                <div class="container">
+                    <div class="row">
+                        <!-- BEGIN TOP BAR LEFT PART -->
+                       
+                        <!-- END TOP BAR LEFT PART -->
+                        <!-- BEGIN TOP BAR MENU -->
+                        <div class="col-md-6 col-sm-6 nav-justified additional-nav ">
+                            <ul class="list-unstyled list-inline pull-right">
+                                <li><a href="/checkout/orderPage">My orders</a></li>
+                                <li><a href="/wishlist">My Wishlist</a></li>
+                                <li><a href="/checkout">Checkout</a></li>
+                                <li><a href="/login">Log In</a></li>
+                            </ul>
+                        </div>
+                        <!-- END TOP BAR MENU -->
+                    </div>
+                </div>        
+            </div>
+            <!-- END TOP BAR -->
+        
+            <!-- BEGIN HEADER -->
+            <div class="header margin-bottom-60">
+              <div class="container">
+                <a class="site-logo" href="/"><img src="../../userPages/pages/img/hamnaLogo.png"  alt="hamnasLogo"></a>
+        
+                <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+        
+                <!-- BEGIN CART -->
+                
+                <div class="top-cart-block">
+                 
+                 
+                
+                 
+                </div> 
+                <!--END CART -->
+        
+                <!-- BEGIN NAVIGATION -->
+                <div class="header-navigation">
+                  <ul>
+                    <li class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+                        Woman 
+                        
+                      </a>
+                        
+                      <!-- BEGIN DROPDOWN MENU -->
+                      <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                        <%if(women[0]){%>  
+                          <% for(women of women[0].subcategories ){ %>
+                            <li><a href="/item/<%=women._id%>/subCategory"><%=women.sub_category%></a></li>
+                          <% } %>
+                          <%}else{%>
+                            <li></li>
+                            <%}%>
+                      </ul>
+                      <!-- END DROPDOWN MENU -->
+                    </li>
+                    <li class="dropdown dropdown-megamenu">
+                      <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+                        Men
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                          <%if(men[0]){%>
+                          <% for(men of men[0].subcategories ){ %>
+                            
+                            <li><a href="/item/<%=men._id%>/subCategory"><%=men.sub_category%></a></li>
+                          <% } %>
+                          <%}else{%>
+                            <li></li>
+                            <%}%>
+                      </ul>
+                    </li>
+                    <li class="dropdown dropdown-megamenu">
+                      <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+                        Kids
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li class="dropdown-submenu">
+                          <%if(kids[0]){%>
+                          <% for(kids of kids[0].subcategories ){ %>
+                            
+                            <li><a href="/item/<%=kids._id%>/subCategory"><%=kids.sub_category%></a></li>
+                          <% } %>
+                          <%}else{%>
+                            <li></li>
+                            <%}%>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- END TOP BAR -->
+        
+            <!-- BEGIN HEADER -->
+            
+            <div class="main" style="min-height:100vh;">
+                <div class="">
+                    <div class="row  ">
+                        <!-- BEGIN SIDEBAR -->
+                        <div class="sidebar col-lg-3">
+                          <ul class="dropdown dropdown-megamenu">
+                        </ul>
+                    </div>
+                  
+                    <div class="col-md-6 col-sm-7">
+                        <div class="content-form-page padding-top-20">
+                            <h1>Registeration </h1>
+                            <form action="/registerOTP" method="post" class="form-horizontal form-without-legend padding-top-20">
+                              <div class="form-group">
+                                  <label class="col-lg-2 " required>Name </label>
+                                  <div class="col-lg-8">
+                                      <input type="text" id="name" name="name" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 " required>E-Mail </label>
+                                    <div class="col-lg-8">
+                                        <input type="email" id="Email" name="Email" class="form-control">
+                                      </div>
+                                  </div>
+                                <div class="form-group">
+                                  <label class="col-lg-2 "  required>PASSWORD </label>
+                                  <div class="col-lg-8">
+                                    <input type="password" name="Password"  class="form-control">
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 "  required>Phone no </label>
+                                    <div class="col-lg-8">
+                                      <input type="text" name="Number"  class="form-control">
+                                    </div>
+                                  </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 " name="Password" > </label>
+                                  <div class="col-lg-8">
+                                    <button class="btn btn-primary margin-bottom-20 col-lg-2" type="submit">Login</button><br>
+                                  </div>
+                                </div>
+                            
+                          </form>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </body>
+</html>
+
+

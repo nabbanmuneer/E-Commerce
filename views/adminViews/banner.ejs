@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%-include("./partials/head")%>
+</head>
+<body>
+    <div id="main-wrapper">
+        <%-include("./partials/header")%>
+        <%-include("./partials/sidebars")%>
+        <div class="content-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <div class="card">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>name</th>
+                                <th> </th>
+                                <th>  </th>
+                                <th>   </th>
+            
+                            </tr>
+                        </thead>
+                    </div>
+                    <tbody>
+                    <%for(value of bannerData){%>
+                    <tr> 
+                        <td>
+                        <img src="<%=value.image[0].url%>" style="width:300px;" alt="<%=value.image[0].filename%>" >
+                        </td>
+                        <td>
+                            <%=value.banner%>
+                        </td>
+                        <td>
+                            <%if(value.bannerStatus == true){%>
+                                <button onclick="banOpt(event,'<%=value._id%>')" class="btn btn-primary" id="<%=value._id%>" value="true">unpicked</button>
+                                <%}else{%>
+                                    <button onclick="banOpt(event,'<%=value._id%>')" class="btn btn-primary" id="<%=value._id%>" value="false">pick</button>
+                            <%}%>
+                        </td>
+                    </tr>
+                    <%}%>
+                    </tbody>
+                </table> 
+            </div>
+
+        </div>
+    <%-include("./partials/footers")%>
+    <%-include("./partials/scripts")%>
+    <script>
+        function banOpt(event,ban_id){
+            let select=document.getElementById(ban_id).value
+            // console.log("select",select);
+            fetch('/admin/select',{
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body:JSON.stringify({ban_id,select})
+            }).then(res=>res.json()).then(data=>{
+                console.log("data",data);
+                if(data.select == 'false' ){
+                    document.getElementById(data.ban_id).innerHTML="picked"
+                    document.getElementById(data.ban_id).value="false"
+                    // console.log("true...........");
+                }else{
+                    document.getElementById(data.ban_id).innerHTML="unpicked"
+                    document.getElementById(data.ban_id).value="true"
+                    // console.log("fale.........");
+                }
+            })
+        }
+    </script>
+</body>
+</html> 

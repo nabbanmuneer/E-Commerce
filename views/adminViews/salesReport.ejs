@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%-include("./partials/head")%>
+    
+    </head>
+    <body>
+        <div id="main-wrapper">
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+            
+    
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+        
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <%-include("./partials/header")%>
+    
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+<!--**********************************
+            Sidebar start
+        ***********************************-->
+        <%-include("./partials/sidebars")%>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+        
+        
+        <!--**********************************
+            Content body start
+        ***********************************-->
+            <div class="content-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <h1>Sales Report</h1>
+                        <div class="card">
+                            
+                                <tr>
+                                    <th>Date</th>
+                                    <th>products</th>
+                                    <th>amount</th>
+                                    <th>  </th>
+                                    <th>  </th>
+                
+                                </tr>
+                            
+                        </div>
+                        <tbody>
+                            <%let i=0 %>
+                            <% for(orders of orderData){%>
+                                  <tr>
+                                    <td>
+                                  <%=orders._id%>
+                                    </td>
+                                    <td>
+                                    <%=orders.count%>
+                                    </td>
+                                    <td>
+                                        <%=total[i]%>
+                                        </td>
+                                  </tr>
+                                  <% i=i+1}%>
+                                  <tr>
+                                    <td>
+                                        total sales
+                                    </td>
+                                    <td>
+                                        <%=totalorder%>
+                                    </td>
+                                    <td>
+                                        <%=totals%>
+                                    </td>
+                                  </tr>
+                                
+                        </tbody>
+                    </table> 
+                </div>
+
+            </div>
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <%-include("./partials/footers")%>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+        </div> 
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <%-include("./partials/scripts")%>
+
+
+
+
+    </body>
+
+</html>

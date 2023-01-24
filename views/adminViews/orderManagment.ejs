@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%-include("./partials/head.ejs")%>
+</head>
+<body>
+    <div id="main-wrapper">
+        <%-include("./partials/header.ejs")%>
+        <%-include("./partials/sidebars.ejs")%>
+        <div class="content-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <div class="card">
+                        <thead>
+                            <tr>
+            
+                                <th>Name</th>
+                                <th>delivery address</th>
+                                <th> order Id</th>
+                                <th>Type of payment</th>
+                                <th>PaymentStatus </th>
+                                <th>delivery Status</th>
+    
+                            </tr>
+                        </thead>
+                    </div>
+                    <tbody>
+                        <%for(value of orderData){%>
+                            <tr>
+                                <td>
+                                    <%=value.user[0].name%>
+                                </td>
+                                <td>s
+                                    <%=value.address[0].locality%>
+                                    <%=value.address[0].city%><br>
+                                    <%=value.address[0].region%>
+                                    <%=value.address[0].country%><br>
+                                    <%=value.address[0].post_code%>
+                                    <%=value.address[0].landMark%>
+                                </td>
+                                <td>
+                                    <%=value.product[0]._id%>
+                                </td>
+                                <td>
+                                    <%=value.payamentType%><br>
+                                    
+                                </td>
+                                <td>
+                                    <%if(value.paymentStatus=='pending'){%>
+                                    <select class="" placeholder="" name="" id="pay<%=value._id%>" onchange="payOpt(event,'<%=value._id%>')">
+                                        <option value="<%=value.paymentStatus%>"><%=value.paymentStatus%></option>
+                                        <option value="success">Success</option>
+                                    <%}else{%>
+                                        <%=value.paymentStatus%>
+                                    <%}%>
+                                </td>
+                                <td>
+                                    <select class="" name="category_id" id="del<%=value._id%>" onchange="delOpt(event,'<%=value._id%>')">
+                                        <option value="<%=value.deliveryStatus%>"><%=value.deliveryStatus%></option>
+                                        <option value="Shipped">Shipped</option>
+                                        <option value="Delivered">Delivered</option>
+                                </td>
+                                <td>
+                                    <form method="post" action="/admin/orderDetails">
+                                        <input  name="order_Id" value="<%=value._id%>" hidden>
+                                        <button class="btn-primary" type="submit">view details...</button>
+                                    </form>
+                                </td>
+                                
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <%-include("./partials/footers.ejs")%>
+    <%-include("./partials/scripts.ejs")%>
+    <script>
+        function delOpt(event,order_Id){
+            let option=document.getElementById("del"+order_Id).value
+            fetch("/admin/delivaryOption",
+            {
+             method:"POST",
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({order_Id,option})
+            })
+            .then(res=>res.json()).then(data=>{
+                console.log(data);
+            })
+        }
+        function payOpt(event,order_Id){
+            let option=document.getElementById("pay"+order_Id).value
+            fetch("/admin/paymentOption",
+            {
+             method:"POST",
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({order_Id,option})
+            })
+            .then(res=>res.json()).then(data=>{
+                console.log(data);
+            })
+        }
+
+        // function order(order_Id){
+        //     console.log(order_Id)
+
+            // fetch("/admin/orderDetails",
+            // {
+            //  method:"POST",
+            // headers:{'Content-Type':'application/json'},
+            // body:JSON.stringify({order_Id})
+            // }) 
+        
+        // }
+    </script>
+</body>
+</html> 

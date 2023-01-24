@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%-include("./partials/head")%>
+    
+    </head>
+    <body>
+        <div id="main-wrapper">
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+            
+    
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+        
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <%-include("./partials/header")%>
+    
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+    <!--**********************************
+            Sidebar start
+        ***********************************-->
+            <%-include("./partials/sidebars")%>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+        
+        
+        <!--**********************************
+            Content body start
+        ***********************************-->
+            <div class="content-body">
+                <div class="mt-5 ">
+                    <h1 class="container text-center">ADD NEW BRAND</h1>
+                    <div class="container card col-4">
+                        <form class="mt-5 mb-5 login-input" method="post" action="/brand/addBrand" enctype="multipart/form-data">
+                            <div class="form-group ml-2">
+                                <label class=" h-6">Enter the brand name</label><br>
+                                <input type="text" name="brand" class="form-control"  placeholder="add brand" required><br>
+                                <!-- <div class="col-lg-12"> -->
+                        <!-- <div class="card">
+                            <div class="card-body"> -->
+                                    <div class="card-title"> Input logo</div>
+                                    <div class="basic-form">
+                                    <!-- <form> -->
+                                        <div class="form-group">
+                                            <input type="file" name="image" class="form-control-file" multiple>
+                                        </div>
+                                    <!-- </form> -->
+                                    </div>
+                            <!-- </div>
+                        </div> -->
+                                <!-- </div> -->
+                                <button class="text-white bg-primary form-control" type="submit">add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <%-include("./partials/footers")%>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+        </div> 
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <%-include("./partials/scripts")%>
+
+
+
+
+    </body>
+
+</html>

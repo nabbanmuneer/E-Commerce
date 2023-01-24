@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <%-include("./partials/head")%>
+    
+    </head>
+
+<body class="">
+
+    <div id="main-wrapper">
+        
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+        <%-include("./partials/header")%>
+
+        <%-include("./partials/sidebars")%>
+        
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body p-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="box">Logo</th>
+                        <th class="table-head">Brand Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%for(value of brands){%>
+                    <tr>
+                        <td>
+                            <img src="<%=value.image[0].url%>" style="width:100px;" alt="<%=value.image[0].filename%>" >   
+                        </td>
+                        <td>
+                            <%=value.brand%>
+                        </td>
+                    </tr> 
+                    <%}%>
+                </tbody>
+            </table>
+        </div>
+    
+        <!--**********************************
+            Main wrapper end
+        ***********************************-->
+        
+        <!--**********************************
+                Footer start
+            ***********************************-->
+            <%-include("./partials/footers")%>
+            <!--**********************************
+                Footer end
+            ***********************************-->
+
+    </div>    
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <%-include("./partials/scripts")%>
+
+</body>
+
+</html>

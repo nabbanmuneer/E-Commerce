@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%-include("./partials/head")%>
+
+</head>
+<body>    
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <%-include("./partials/header")%>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <%-include("./partials/sidebars.ejs")%>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+        
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <div class="col-lg-12 mt-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Edit Product</h4>
+                        <div class="basic-form">
+                        <form method="post" action="/product/productPut/<%=id._id%>?_method=PUT" >
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Product Name</label>
+                                        <input type="text" class="form-control" value="<%=id.product_name%>" name="product_name" placeholder="Product Name">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Brand</label>
+                                        <select class="form-control " placeholder="brand" name="brand_id" id="brand">
+                                            <option value="<%=id.brand_id%>">Choose</option>
+                                           <% for(brand of brand ){ %>
+                                                <option value=" <%= brand._id%>">
+                                                    <%= brand.brand%>
+                                                </option>
+                                            <% } %>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>category</label>
+                                        <select class="form-control " placeholder="category" name="category_id" id="category_id">
+                                            <option value="<%=id.category_id%>">Choose</option>
+                                            <% for(category of category ){ %>
+                                                <option value=" <%= category._id%>">
+                                                    <%= category.categories%>
+                                                </option>
+                                            <% } %>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="" for="category">Choose a subcategory</label>
+                                            <select id="subcategory" name="subcategory_id" class="form-control" >
+                                                <option value="id.subcategory_id">Choose</option>
+                                            </select>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label>Product Detail</label>
+                                    <input type="text" name="details" value="<%=id.details%>" class="form-control" placeholder="Details">
+                                </div>
+                                <label>Quantiy in Sizes</label>
+                                <div class="form-row">
+                                    <div class="form-group col-md-3">
+                                        <label>Small</label>
+                                        <input type="text" name="small_stock" value="<%=id.product_size.small%>" class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label>Medium</label>
+                                        <input type="text" name="medium_stock" value="<%=id.product_size.medium%>" class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label>Large</label>
+                                        <input type="text" name="large_stock" value="<%=id.product_size.large%>" class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label>Xtra Large</label>
+                                        <input type="text" name="xtraLarge_stock" value="<%=id.product_size.xtraLarge%>" class="form-control" placeholder="">
+                                    </div>   
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Product Price</label>
+                                        <input type="text" name="price" value="<%=id.price%>" class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Product Selling Price</label>
+                                        <input type="text" name="mrp" value="<%=id.mrp%>" class="form-control" placeholder="">
+                                    </div>  
+                                </div>
+                                <div class="form-group">
+                                    <label>Description:</label>
+                                    <textarea class="form-control h-150px" name="description" rows="6" id="comment"><%=id.description%></textarea>
+                                </div>
+                                
+                                
+                                <button type="submit" class="btn btn-dark">Add Product</button>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <%-include("./partials/footers")%>
+    <!--**********************************
+        Footer end
+    ***********************************-->
+    </div>
+    <script>
+        const category = document.getElementById("category_id");
+        
+        category.addEventListener("change",function(){
+            let categoryId = category.value;
+            const subCategoryField =document.getElementById('subcategory')
+            let option =" ";
+            console.log("fetch");
+            fetch('/product/fetch',{
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body:JSON.stringify({categoryId})
+            }).then(res=>res.json()).then(data=>{
+                let subCategory=data.subcategory;
+                //console.log(subCategory)
+                if(subCategory.length > 0){
+                    console.log(subCategory[0].sub_category)
+                    // subcategory.forEach((eachSubCategory)=>{
+                    //     optiion +='<option value="${eachSubCategory._id}">${eachSubCategory.sub_category}</option>';
+                    // });
+                    // option +='</select>';
+                    // subCategoryField.innerHTML=option;
+                    addingHtml=""
+                    for(let i=0;i<subCategory.length;i++){
+                        addingHtml += '<option value='+subCategory[i]._id+'>' +subCategory[i].sub_category+' </option>';
+                    }
+                    subCategoryField.innerHTML='<option value=> option </option>'
+                }
+                else{
+                    productSubcategory.innerHTML= '<option value=> option </option>'
+
+                }
+                console.log(addingHtml);
+                subCategoryField.innerHTML+=addingHtml
+
+                
+            })
+        });
+    </script>
+    <%-include("./partials/scripts")%>
+
+
+</body>
+</htm

@@ -1,0 +1,106 @@
+
+    <!-- BEGIN STYLE CUSTOMIZER -->
+    
+    <!-- END BEGIN STYLE CUSTOMIZER --> 
+
+    <!-- BEGIN TOP BAR -->
+    <div class="pre-header">
+        <div class="container">
+            <div class="row">
+                <!-- BEGIN TOP BAR LEFT PART -->
+               
+                <!-- END TOP BAR LEFT PART -->
+                <!-- BEGIN TOP BAR MENU -->
+                <div class="col-md-6 col-sm-6 nav-justified additional-nav ">
+                    <ul class="list-unstyled list-inline pull-right">
+                        <li><a href="/checkout/orderPage">My orders</a></li>
+                        <li><a href="/wishlist">My Wishlist</a></li>
+                        <li><a href="/checkout">Checkout</a></li>
+                        <%if(user_id){%>
+                          <li><a href="/logout">Log Out</a></li>
+                          <%}else{%>
+                        <li><a href="/login">Log In</a></li>
+                        <%}%>
+                    </ul>
+                </div>
+                <!-- END TOP BAR MENU -->
+            </div>
+        </div>        
+    </div>
+    <!-- END TOP BAR -->
+
+    <!-- BEGIN HEADER -->
+    <div class="header">
+      <div class="container">
+        <a class="site-logo" href="/"><img src="../../userPages/pages/img/hamnaLogo.png"  alt="hamnasLogo"></a>
+
+        <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+
+        <!-- BEGIN CART -->
+        
+        <div class="top-cart-block">
+         
+          <a href="/cart" class="fa fa-shopping-cart">cart</a>
+        
+         
+        </div> 
+        <!--END CART -->
+
+        <!-- BEGIN NAVIGATION -->
+        <div class="header-navigation">
+          <ul>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+                Woman 
+                
+              </a>
+                
+              <!-- BEGIN DROPDOWN MENU -->
+              <ul class="dropdown-menu">
+                <li class="dropdown-submenu">
+                <%if(women[0]){%>  
+                  <% for(women of women[0].subcategories ){ %>
+                    <li><a href="/item/<%=women._id%>/subCategory"><%=women.sub_category%></a></li>
+                  <% } %>
+                  <%}else{%>
+                    <li></li>
+                    <%}%>
+              </ul>
+              <!-- END DROPDOWN MENU -->
+            </li>
+            <li class="dropdown dropdown-megamenu">
+              <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+                Men
+              </a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-submenu">
+                  <%if(men[0]){%>
+                  <% for(men of men[0].subcategories ){ %>
+                    
+                    <li><a href="/item/<%=men._id%>/subCategory"><%=men.sub_category%></a></li>
+                  <% } %>
+                  <%}else{%>
+                    <li></li>
+                    <%}%>
+              </ul>
+            </li>
+            <li class="dropdown dropdown-megamenu">
+              <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+                Kids
+              </a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-submenu">
+                  <%if(kids[0]){%>
+                  <% for(kids of kids[0].subcategories ){ %>
+                    
+                    <li><a href="/item/<%=kids._id%>/subCategory"><%=kids.sub_category%></a></li>
+                  <% } %>
+                  <%}else{%>
+                    <li></li>
+                    <%}%>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>

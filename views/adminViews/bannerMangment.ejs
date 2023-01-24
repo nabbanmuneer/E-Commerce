@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%-include("./partials/head")%>
+</head>
+<body>
+    <div id="main-wrapper">
+        <%-include("./partials/header")%>
+        <%-include("./partials/sidebars")%>
+        <div class="content-body">
+            
+                <div class="mt-5 ">
+                    <h1 class="container text-center">ADD NEW BANNER</h1>
+                    <div class="container card col-4">
+                        <form class="mt-5 mb-5 login-input" method="post" action="/admin/banner" enctype="multipart/form-data">
+                            <div class="form-group ml-2">
+                                <label class=" h-6">Enter the topic</label><br>
+                                <input type="text" name="banner" class="form-control"  placeholder="Add Banner" required><br>
+                                
+                                    <div class="card-title"> Input banner</div>
+                                    <div class="basic-form">
+                                        <div class="form-group">
+                                            <input type="file" name="image" class="form-control-file" multiple>
+                                        </div>
+                                    </div>
+                                <button class="text-white bg-primary form-control" type="submit">add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+    <%-include("./partials/footers")%>
+    <%-include("./partials/scripts")%>
+</body>
+</html> 

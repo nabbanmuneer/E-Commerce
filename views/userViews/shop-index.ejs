@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<!--
+Template: Metronic Frontend Freebie - Responsive HTML Template Based On Twitter Bootstrap 3.3.4
+Version: 1.0.0
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<!-- Head BEGIN -->
+<head>
+ <%-include("./partials/head.ejs")%>
+</head>
+<!-- Head END -->
+<!-- Body BEGIN -->
+<body class="ecommerce">
+<%-include("./partials/header.ejs")%>
+    <!-- Header END -->
+
+    <!-- BEGIN SLIDER -->
+    <div class="page-slider container-fluid margin-bottom-35">
+      <%if(banner[0]){%>
+      <div id="carousel-example-generic" class="carousel slide carousel-slider row margin-bottom-40">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+              <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
+              <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+              <!-- First slide -->
+              <div class="item carousel-item-four active" style="background-image:url('<%=banner[0].image[0].url%>');">
+                  <div class="container">
+                      <div class="carousel-position-four text-center ">
+                          <h2 class="margin-bottom-20 animate-delay carousel-title-v3 border-bottom-title text-uppercase" data-animation="animated fadeInDown">
+                              Shop with <br/><span class="color-red-v2">New Exprirence and Joy</span><br/> 
+                          </h2>
+                          <p class="carousel-subtitle-v2" data-animation="animated fadeInUp">with more than 1000 of products <br/>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+              
+              <!-- Second slide -->
+              <%if(banner[1]){%>
+              <div class="item carousel-item-five" style="background-image:url('<%=banner[1].image[0].url%>')">
+                  <div class="container">
+                      <div class="carousel-position-four text-center">
+                          <h2 class="animate-delay carousel-title-v4" data-animation="animated fadeInDown">
+                              Unlimted products
+                          </h2>
+                          <p class="carousel-subtitle-v2" data-animation="animated fadeInDown">
+                            and
+                          </p>
+                          <p class="carousel-subtitle-v3 margin-bottom-30" data-animation="animated fadeInUp">
+                               new collection
+                          </p>
+                          
+                      </div>
+                     
+                  </div>
+              </div>
+              <%}%>
+              <!-- Third slide -->
+              <%if(banner[2]){%>
+              <div class="item carousel-item-six" style="background-image:url('<%=banner[2].image[0].url%>')">
+                  <div class="container">
+                      <div class="carousel-position-four text-center">
+                          <span class="carousel-subtitle-v3 margin-bottom-15" data-animation="animated fadeInDown">
+                              Full Admin &amp; Frontend
+                          </span>
+                          <p class="carousel-subtitle-v4" data-animation="animated fadeInDown">
+                              eCommerce UI
+                          </p>
+                          <p class="carousel-subtitle-v3" data-animation="animated fadeInDown">
+                              Is Ready For Your Project
+                          </p>
+                      </div>
+                  </div>
+              </div>
+              <%}%>
+              <%if(banner[3]){%>
+              <!-- Fourth slide -->
+              <div class="item carousel-item-seven" style="background-image:url('<%=banner[3].image[0].url%>')">
+                 <div class="center-block">
+                      <div class="center-block-wrap">
+                          <div class="center-block-body">
+                              <h2 class="carousel-title-v1 margin-bottom-20" data-animation="animated fadeInDown">
+                                  The most <br/>
+                                  wanted bijouterie
+                              </h2>
+                              <a class="carousel-btn" href="#" data-animation="animated fadeInUp">But It Now!</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <%}%>
+          <!-- Controls -->
+          <a class="left carousel-control carousel-control-shop" href="#carousel-example-generic" role="button" data-slide="prev">
+              <i class="fa fa-angle-left" aria-hidden="true"></i>
+          </a>
+          <a class="right carousel-control carousel-control-shop" href="#carousel-example-generic" role="button" data-slide="next">
+              <i class="fa fa-angle-right" aria-hidden="true"></i>
+          </a>
+      </div>
+      <%}%>
+  </div>
+
+            
+    <!-- END SLIDER -->
+
+    <div class="main" style="min-height:100vh;">
+      <div class="container">
+        <!-- BEGIN SALE PRODUCT & NEW ARRIVALS -->
+        <div class="row margin-bottom-50 ">
+          <!-- BEGIN SALE PRODUCT -->
+          <div class="col-md-12 sale-product">
+            <div class="h3">BRANDS</div>
+              <div class="owl-carousel owl-carousel5 p-3">
+                <%for(brands of brand){%>
+                <div>
+                  <div class="product-item">
+                    <div class="pi-img-wrapper" >
+                      <img src="<%=brands.image[0].url%>" style="height:30vh" class="img-responsive" alt="<%=brands.brand%>">
+                    </div>
+                    <h3><a href="/item/<%=brands._id%>/brand" style="text-decoration: underline;"><b><%=brands.brand%></b></a></h3>
+                  </div>
+                </div>
+                <%}%>
+              </div>
+            </div>
+          </div>
+          <!-- END SALE PRODUCT -->
+        </div>
+        <!-- END SALE PRODUCT & NEW ARRIVALS -->
+
+        <!-- BEGIN SIDEBAR & CONTENT -->
+        <%-include('./partials/sidebar')%>
+          <!-- END SIDEBAR -->
+          <!-- BEGIN CONTENT -->
+          <div class="col-md-9 col-sm-8 margin-bottom-40">
+            
+            <div class="owl-carousel owl-carousel3">
+              <div>
+                <div class="product-item">
+                  <div class="pi-img-wrapper">
+                    <img src="../userPages/pages/img/products/cat-men1.jpg" style="height:50vh;"  class="img-responsive" alt="mens">
+                  </div>
+                  <%if(men[0]){%>
+                  <h3><a href="/item/<%=men[0]._id%>/category">MENS</a></h3>
+                  <%}else{%>
+                    <h3><a href="#">MENS</a></h3>
+                  <%}%>
+                </div>
+              </div>
+              <div>
+                <div class="product-item">
+                  <div class="pi-img-wrapper">
+                    <img src="../userPages/pages/img/products/cat-wom.webp" style="height:50vh;" class="img-responsive" alt="womens">
+                  </div>
+                  <%if(women[0]){%>
+                  <h3><a href="/item/<%=women[0]._id%>/category">WOMENS</a></h3>
+                  <%}else{%>
+                    <h3><a href="#">WOMENS</a></h3>
+                  <%}%>
+                </div>
+              </div>
+              <div>
+                <div class="product-item">
+                  <div class="pi-img-wrapper">
+                    <img src="../userPages/pages/img/products/cat-kid.webp" style="height:50vh;" class="img-responsive" alt="kids">
+                  </div>
+                  <%if(kids[0]){%>
+                  <h3><a href="/item/<%=kids[0]._id%>/category">KIDS</a></h3>
+                  <%}else{%>
+                    <h3><a href="#">KIDS</a></h3>
+                    <%}%>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END CONTENT -->
+        <!-- END SIDEBAR & CONTENT -->
+
+        <!-- BEGIN TWO PRODUCTS & PROMO -->
+        <div class=" container ">
+          <!-- BEGIN TWO PRODUCTS -->
+          <div class="col-md-12 ">
+            <b><p class="h3" >PRODUCTS</p></b>
+            <div class="owl-carousel owl-carousel5">
+              <%for(value of product){%>
+              <div class="product-item">
+                
+                  <div class="pi-img-wrapper" >
+                    <img href="/item/itemDetail/<%=value._id%>"  src="<%=value.image[0].url%>" class="img-responsive"  alt="<%=value.product_name%>">
+                  </div>
+                  <p style="margin-top: 10%;"><a href="/item/itemDetail/<%=value._id%>"><%=value.product_name%></a></p>
+                  <div   class=""  value="<%=value._id%>">Rs.<%=value.mrp%></div><br><br>
+                    <a class="btn btn-default add2cart col-6" id="<%=value._id%>" style="align-items: flex-end;margin-bottom: 10%;" onclick="wish(event,'<%=value._id%>')" >add Wishlist</a>
+              </div>
+                
+             
+              <%}%>
+            </div>
+          </div>
+        </div>
+        
+          
+          <!-- END TWO PRODUCTS -->
+          <!-- BEGIN PROMO -->
+          
+          <!-- END PROMO -->
+        </div> 
+      </div>       
+      <%-include("./partials/footer")%>
+        <!-- END TWO PRODUCTS & PROMO -->
+      
+    <!-- BEGIN BRANDS -->
+    
+    <!-- END BRANDS -->
+
+    <!-- BEGIN STEPS -->
+    
+    <!-- END STEPS -->
+
+    <!-- END fast view of a product -->
+
+    <%-include("./partials/scripts")%>
+    <script>
+      function wish(event,product_Id){
+        console.log(product_Id);
+       fetch('/wishlist/addList',
+       {
+          method:"POST",
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({product_Id})
+       })
+       .then(res=>res.json()).then(data=>{
+        Swal.fire({
+            icon: 'success',
+            title: 'Done',
+            text: 'your product add on wishlist'
+        }).then(function() {
+            document.getElementById(data.product_Id).innerHTML="done"
+        })
+       })
+      }
+    </script>
+
+    <!-- END PAGE LEVEL JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

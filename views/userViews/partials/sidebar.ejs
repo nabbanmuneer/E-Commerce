@@ -1,0 +1,56 @@
+<div class="row margin-bottom-40" style="margin-right:0;">
+  <!-- BEGIN SIDEBAR -->
+  <div class="sidebar col-md-3 col-sm-5">
+    <ul class="dropdown dropdown-megamenu">
+      <li class="list-group-item clearfix">
+        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+          Woman 
+          
+        </a>
+          
+        <!-- BEGIN DROPDOWN MENU -->
+        <ul class="dropdown-menu">
+          <li class="dropdown dropdown-megamenu">
+          <%if(women[0]){%>  
+            <% for(women of women[0].subcategories ){ %>
+              <li><a href="/item/<%=women._id%>/subCategory"><%=women.sub_category%></a></li>
+            <% } %>
+            <%}else{%>
+              <li></li>
+              <%}%>
+        </ul>
+        <!-- END DROPDOWN MENU -->
+      </li>
+      <li class="list-group-item clearfix">
+        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+          Men
+        </a>
+        <ul class="dropdown-menu">
+          <li class="dropdown dropdown-megamenu">
+            <%if(men[0]){%>
+            <% for(men of men[0].subcategories ){ %>
+              
+              <li><a href="/item/<%=men._id%>/subCategory"><%=men.sub_category%></a></li>
+            <% } %>
+            <%}else{%>
+              <li></li>
+              <%}%>
+        </ul>
+      </li>
+      <li class="list-group-item clearfix">
+        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+          Kids
+        </a>
+        <ul class="dropdown-menu">
+          <li class="dropdown dropdown-submenu">
+            <%if(kids[0]){%>
+            <% for(kids of kids[0].subcategories ){ %>
+              
+              <li><a href="/item/<%=kids._id%>/subCategory"><%=kids.sub_category%></a></li>
+            <% } %>
+            <%}else{%>
+              <li></li>
+              <%}%>
+
+        </ul>
+  </div>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <%-include("./partials/head")%>
+    
+    </head>
+
+<body class="">
+
+    <div id="main-wrapper">
+        
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+        <%-include("./partials/header")%>
+
+        <%-include("./partials/sidebars")%>
+        
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <table class="table table-striped">
+                <div class="card">
+                    <thead>
+                        <tr>
+                            <th class="table-head">Coupon code</th>
+                            <th class="table-head">Coupon Name</th>
+                            <th class="table-head">Coupon Amount</th>
+                            <th class="table-head">Coupon min amount</th>
+                            <th class="table-head">Coupon Expire</th>
+                        </tr>
+                    </thead>
+                </div>
+                <tbody>
+                    <%for(value of coupon){%>
+                        <tr>
+                            <td>
+                                <%=value.couponCode%>
+                            </td>
+                            <td>
+                                <%=value.couponName%>
+                            </td>
+                            <td>
+                                <%=value.couponAmount%>%
+                            </td>
+                            <td>
+                                <%=value.couponMinAmount%>
+                            </td>
+                            <td>
+                                <%=value.couponExpires%>
+                            </td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        <!--**********************************
+            Main wrapper end
+        ***********************************-->
+        
+        <!--**********************************
+                Footer start
+            ***********************************-->
+            <%-include("./partials/footers")%>
+            <!--**********************************
+                Footer end
+            ***********************************-->
+
+    </div>    
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <%-include("./partials/scripts")%>
+
+</body>
+
+</html>

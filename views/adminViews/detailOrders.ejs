@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%-include("./partials/head.ejs")%>
+</head>
+<body>
+    <div id="main-wrapper">
+        <%-include("./partials/header.ejs")%>
+        <%-include("./partials/sidebars")%>
+        <div class="content-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <div class="card">
+                        <thead>
+                            <tr>
+                          <th class="goods-page-quantity">Order_id</th>
+                        <th class="goods-page-quantity">Product Details</th>
+                        <th class="goods-page-quantity">Delivary Address</th>
+                        <th class="goods-page-quantity">total payment</th>
+                        <th class="goods-page-price">Payment Method</th>
+                        <th class="goods-page-total" colspan="2">delivery status</th>
+                      </tr>
+                    </thead>
+                </div>
+                <tbody>
+                      <% for(orders of order){%>
+                        <div>
+                          <tr>
+                            <td>
+                          <%=orders._id%>
+                            </td>
+                            <td>
+                        <%for(data of orders.product){%>
+                          <label>poduct Name :</label>
+                          <%=data.product_Name%><br>
+                          <label>poduct Size :</label>
+                          <%=data.size%>
+                          <label>poduct Quntity :</label>
+                          <%=data.quantity%>
+                        <br>
+    
+                        <%}%>
+                            </td>
+                            <td>
+                      </div>
+                    
+    
+                        <%=orders.address[0].locality%><br>
+                        <%=orders.address[0].city%>
+                        <%=orders.address[0].region%><br>
+                        <%=orders.address[0].country%>
+                        <%=orders.address[0].post_code%>
+                    </td>
+                    <td>
+                      <%=orders.total%>
+                    </td>
+                    <td>
+                      <%=orders.payamentType%><br>
+                      <%=orders.paymentStatus%>
+                    </td>
+                    <td>
+                      <%=orders.deliveryStatus%>
+                    </td>
+                      </tr>
+                    <%}%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+    <%-include("./partials/footers")%>
+ 
+    <%-include("./partials/scripts")%>
+</body>
+</html>

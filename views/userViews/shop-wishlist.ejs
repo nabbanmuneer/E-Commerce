@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<!--
+Template: Metronic Frontend Freebie - Responsive HTML Template Based On Twitter Bootstrap 3.3.4
+Version: 1.0.0
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<!-- Head BEGIN -->
+<head>
+  <%-include("./partials/head")%>
+  <!-- Theme styles END -->
+</head>
+<!-- Head END -->
+
+<!-- Body BEGIN -->
+<body class="ecommerce">
+    <!-- BEGIN STYLE CUSTOMIZER -->
+    <%-include("./partials/header")%>
+    <!-- Header END -->
+    
+    <div class="main">
+      <div class="container" style="min-height:100vh;">
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li class="active">My Wish List</li>
+        </ul>
+        <!-- BEGIN SIDEBAR & CONTENT -->
+        <%-include("./partials/sidebar")%>
+          <!-- END SIDEBAR -->
+
+          <!-- BEGIN CONTENT -->
+          <div class="col-md-9 col-sm-7">
+            <h1>My Wish List</h1>
+            <div class="goods-page">
+              <div class="goods-data clearfix">
+                <div class="table-wrapper-responsive">
+                <table summary="Shopping cart">
+                  <tr>
+                    <th class="goods-page-image">Image</th>
+                    <th class="goods-page-description">Description</th>
+                    <th class="goods-page-stock">Stock</th>
+                    <th class="goods-page-price" colspan="2">Unit price</th>
+                  </tr>
+                  <%for(data of wish){%>
+                  <tr>
+                    <td class="goods-page-image">
+                      <a href="/item/itemDetail/<%=wish[0].products[0]._id%>"><img src="<%=wish[0].products[0].image[0].url%>" ></a>
+                    </td>
+                    <td class="">
+                      <h3><a href="javascript:;"><%=wish[0].products[0].product_name%></a></h3>
+                      <p><strong><%=wish[0].brands[0].brand%></strong> - catogery:<%=wish[0].categories[0].categories%></p>
+                      <a href="/item/itemDetail/<%=wish[0].products[0]._id%>">More info is here</a>
+                    </td>
+                    <td class="goods-page-stock">
+                      In Stock
+                    </td>
+                    <td class="goods-page-price">
+                      <strong><span>Rs.</span><%=wish[0].products[0].mrp%></strong>
+                    </td>
+                    <td class="del-goods-col">
+                      <a class="del-goods" onclick="wishremove(event,'<%=wish[0]._id%>')">&nbsp;</a>
+                    </td>
+                  </tr>
+                  <%}%>
+                 
+                </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END CONTENT -->
+        </div>
+        <!-- END SIDEBAR & CONTENT -->
+      </div>
+    </div>
+
+    <!-- BEGIN BRANDS -->
+    
+    <!-- END BRANDS -->
+
+    <!-- BEGIN STEPS -->
+    
+    <!-- END STEPS -->
+
+    <!-- BEGIN PRE-FOOTER -->
+    <%-include("./partials/footer")%>
+    <!-- END FOOTER -->
+
+    <!-- BEGIN fast view of a product -->
+    <div id="product-pop-up" style="display: none; width: 700px;">
+            <div class="product-page product-pop-up">
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-3">
+                  <div class="product-main-image">
+                    <img src="../../userPages/pages/img/products/model7.jpg" alt="Cool green dress with red bell" class="img-responsive">
+                  </div>
+                  <div class="product-other-images">
+                    <a href="javascript:;" class="active"><img alt="Berry Lace Dress" src="../../userPages/pages/img/products/model3.jpg"></a>
+                    <a href="javascript:;"><img alt="Berry Lace Dress" src="../../userPages/pages/img/products/model4.jpg"></a>
+                    <a href="javascript:;"><img alt="Berry Lace Dress" src="../../userPages/pages/img/products/model5.jpg"></a>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-9">
+                  <h2>Cool green dress with red bell</h2>
+                  <div class="price-availability-block clearfix">
+                    <div class="price">
+                      <strong><span>$</span>47.00</strong>
+                      <em>$<span>62.00</span></em>
+                    </div>
+                    <div class="availability">
+                      Availability: <strong>In Stock</strong>
+                    </div>
+                  </div>
+                  <div class="description">
+                    <p>Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed nonumy nibh sed euismod laoreet dolore magna aliquarm erat volutpat 
+Nostrud duis molestie at dolore.</p>
+                  </div>
+                  <div class="product-page-options">
+                    <div class="pull-left">
+                      <label class="control-label">Size:</label>
+                      <select class="form-control">
+                        <option>L</option>
+                        <option>M</option>
+                        <option>XL</option>
+                      </select>
+                    </div>
+                    <div class="pull-left">
+                      <label class="control-label">Color:</label>
+                      <select class="form-control">
+                        <option>Red</option>
+                        <option>Blue</option>
+                        <option>Black</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="product-page-cart">
+                    <div class="product-quantity">
+                        <input id="product-quantity2" type="text" value="1" readonly class="form-control input-sm">
+                    </div>
+                    <button class="btn btn-primary" type="submit">Add to cart</button>
+                    <a href="shop-item.html" class="btn btn-default">More details</a>
+                  </div>
+                </div>
+
+                <div class="sticker sticker-sale"></div>
+              </div>
+            </div>
+    </div>
+    <!-- END fast view of a product -->
+
+    <!-- Load javascripts at bottom, this will reduce page load time -->
+    <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
+    <!--[if lt IE 9]>
+    <script src="../../userPages/plugins/respond.min.js"></script>  
+    
+    <![endif]-->  
+       <!------Sweet Alert---->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.min.js"></script>
+
+    <!------Sweet Alert---->
+      
+    <script src="../../userPages/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="../../userPages/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="../../userPages/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>      
+    <script src="../../userPages/corporate/scripts/back-to-top.js" type="text/javascript"></script>
+    <script src="../../userPages/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <!-- END CORE PLUGINS -->
+
+    <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+    <script src="../../userPages/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
+    <script src="../../userPages/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products -->
+    <script src='../plugins/zoom/jquery.zoom.min.js' type="text/javascript"></script><!-- product zoom -->
+    <script src="../../userPages/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script><!-- Quantity -->
+    <script src="../../userPages/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+    <script src="../../userPages/plugins/rateit/src/jquery.rateit.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script><!-- for slider-range -->
+
+    <script src="../../userPages/corporate/scripts/layout.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            Layout.init();    
+            Layout.initOWL();
+            Layout.initTwitter();
+            Layout.initImageZoom();
+            Layout.initTouchspin();
+            Layout.initUniform();
+            Layout.initSliderRange();
+        });
+    </script>
+    <script>
+      function wishremove(event,wish_Id){
+        fetch('/wishlist/remove',
+       {
+          method:"POST",
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({wish_Id})
+       }).then(res=>res.json()).then(data=>{
+        Swal.fire({
+            icon: 'success',
+            title: 'Done',
+            text: 'your product remove on wishlist'
+        }).then(function() {
+          window.location = "/wishlist";
+        })
+      })
+    }
+    </script>
+    <!-- END PAGE LEVEL JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

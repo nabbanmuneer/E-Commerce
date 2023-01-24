@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%-include("./partials/head")%>
+    
+    </head>
+    <body>
+        <div id="main-wrapper">
+        
+        
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <%-include("./partials/header")%>
+    
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+    <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <%-include("./partials/sidebars")%>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+        
+        
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <div class="mt-5 ">
+                <h1 class="container text-center">ADD NEW SUB-CATEGORY</h1>
+                <div class="container card col-4">
+                    <form class="mt-5 mb-5 login-input" method="post" action="/sub_Catogeries/subCategoriespost" >
+                        <div class="form-group ml-2">
+                            <label class=" h-6">Enter the Sub-category </label><br>
+                            <input type="text" name="sub_category" class="form-control"  placeholder="Sub-category" required><br>
+                            <div class="form-group">
+                                <label>Categories</label>
+                                <select class="form-control mt-2" placeholder="sub-category" name="category_id" id="subcategory">
+                                    <option value=" ">choose..</option>
+                                    <% for(values of categories ){ %>
+                                            <option value=" <%= values._id%>">
+                                                <%= values.categories%>
+                                            </option>
+                                    <% } %>
+                                </select>
+                            </div>
+                            <button class="text-white bg-primary form-control " type="submit">add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <%-include("./partials/footers")%>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+        </div> 
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <%-include("./partials/scripts")%>
+
+
+
+    </body>
+
+</html>
